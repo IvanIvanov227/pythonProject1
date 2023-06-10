@@ -2,10 +2,16 @@ import requests
 from bs4 import BeautifulSoup
 import random
 
+
 response = requests.get('https://store.steampowered.com/?l=russian')
 response = response.content
 
+#Проверка githuba
+contest = 12
+
 html = BeautifulSoup(response, 'lxml')
+
+
 
 fact = html.find_all(class_='gutter_item')
 list_1 = []
@@ -33,7 +39,10 @@ games = {'Бесплатно': ['War Thunder', 'Brawlhalla', 'Dota 2'],
          'Спортивная игра': ['Fishing Planet', 'TRAIL OUT', 'TEKKEN 7'],
          'Стратегия': ['PUBG: BATTLEGROUNDS', 'Hearts of Iron IV', 'Crusader Kings III'],
          'Экшен': ['UNDECEMBER', 'left 4 Dead 2', 'ELDEN RING']
-}
+         }
+
+
+
 def user_games():
     print('ИГРОВЫЕ ЖАНРЫ:\n')
 
@@ -46,5 +55,6 @@ def user_games():
     for game in games:
         if game == genre_user:
             print(f'Для вас подойдёт игра: {random.choice(games[game])}')
+
 
 user_games()
